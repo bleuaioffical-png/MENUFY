@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Menu | Restaurant Management</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#111827">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#fffdfa',
+              gold: {
+                50: '#fffcf2',
+                100: '#fff9e6',
+                200: '#fef0c7',
+                300: '#fde08a',
+                400: '#facc15',
+                500: '#eab308',
+                600: '#d97706',
+                700: '#b45309',
+                800: '#92400e',
+                900: '#78350f',
+              },
+              red: {
+                950: '#1a0404', 
+                900: '#450a0a', 
+                800: '#7f1d1d', 
+                700: '#991b1b',
+                600: '#b91c1c', 
+                50: '#fef2f2',
+              }
+            },
+            fontFamily: {
+              display: ['"Inter"', 'sans-serif'], 
+              body: ['"Inter"', 'sans-serif'],
+            },
+            boxShadow: {
+              'menu': '0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -3px rgba(0, 0, 0, 0.02)',
+              'pill': '0 2px 8px -1px rgba(0, 0, 0, 0.05)',
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'hard': '4px 4px 0px 0px rgba(26, 4, 4, 1)',
+              'hard-gold': '0 10px 40px -10px rgba(180, 83, 9, 0.2)',
+            },
+            animation: {
+              'fadeIn': 'fadeIn 0.4s ease-out forwards',
+              'pop': 'pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'slideIn': 'slideIn 0.4s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              pop: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              slideIn: {
+                '0%': { transform: 'translateX(100%)' },
+                '100%': { transform: 'translateX(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #111827;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .menu-card-border {
+        border: 1px solid rgba(0,0,0,0.05);
+      }
+
+      /* Category Slider Masks */
+      .slider-mask-left {
+        background: linear-gradient(to right, white 0%, transparent 100%);
+      }
+      .slider-mask-right {
+        background: linear-gradient(to left, white 0%, transparent 100%);
+      }
+
+      /* Print Styles */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #printable-invoice, #printable-invoice * {
+          visibility: visible;
+        }
+        #printable-invoice {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          background: white;
+          color: black;
+          padding: 20px;
+        }
+        @page {
+          margin: 0;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "recharts": "https://esm.sh/recharts@2.12.7?external=react,react-dom",
+    "qrcode": "https://esm.sh/qrcode@1.5.3",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed', err));
+        });
+      }
+    </script>
+  </body>
+</html>
